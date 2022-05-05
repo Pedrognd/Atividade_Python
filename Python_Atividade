@@ -6,20 +6,22 @@ anoat = input("Qual o ano atual? ") #Inserir o ano atual.
 soma = int(anona) + int(anoat) #A soma entre o ano de nascimento e o ano atual.
 idade = int(anoat) - int(anona)
 print("Idade:", idade)
+if idade >= 18:                 #Ira identificar se o usuário é maior ou menor de idade.
+  print("De Maior")
+elif idade < 18:
+  print("De Menor")
 print("A soma entre os dois anos é igual a:",soma) #Apresenta na tela o resultado da soma.
-
 print("==============================================================================================================================================================================================================")
 #^Só para sepração entre os dois "Problemas".
 print("Um grupo de alunos deveriam estar na escola às 13:00, mas devido a um atraso no metro chegaram às 14:27.\nQuanto tempo se atrasaram?") #O problema..
 a = 13*60 #Transformação de horas para minutos.
-
+b = (14*60) + 27 #Transformação de horas para minutos.
+c = b - a #Subitração da variavél "a" e "b", para descobrir a diferença.
+d = c/60 #Tranformação de minutos para horas.
+d = str(d).replace('.',' hora e ') #Troca os ".", para o "hora e", para que no final pudessemos visualizar "1 hora e 45".
 print("13 x 60 = 780")
 print("14 x 60 = 840 + 27 = 867  ")
 print("867-780= 87 ")
 print("87/60= 1.45")
 
-b = (14*60) + 27 #Transformação de horas para minutos.
-c = b - a #Subitração da variavél "a" e "b", para descobrir a diferença.
-d = c/60 #Tranformação de minutos para horas.
-d = str(d).replace('.',' hora e ') #Troca os ".", para o ":".
 print("R: Os alunos se atrasaram",d,"minutos.") #Mostra na tela a resposta do problema acima.
