@@ -1,0 +1,79 @@
+import os
+from turtle import clear
+# Adicionar itens
+# Remover itens
+# Exibir itens e total
+# Limpar
+
+produtos = (
+    {'id': 7721, 'nome': 'Teclado', 'preco': 119.99, 'estoque': 187},
+    {'id': 7271, 'nome': 'Headset', 'preco': 219.99, 'estoque': 202},
+    {'id': 2771, 'nome': 'Mouse Pad', 'preco': 79.99, 'estoque': 300},
+    {'id': 2177, 'nome': 'Placa de vídeo', 'preco': 554.99, 'estoque': 34},
+    {'id': 1227, 'nome': 'Notbook', 'preco': 3254.99, 'estoque': 25}
+)
+
+carrinho = []
+
+
+def exibirOpcoes():
+    print('\n\n')
+    print('1 - Adicionar Item')
+    print('2 - Remover Item')
+    print('3 - Exibir itens e o valor total')
+    print('4 - Limpar Carrinho de compras')
+    print('0 - Sair')
+
+
+def exibirProdutos():
+    for p in produtos:
+        print(
+            'Id: {0} - Nome: {1} - Preço: {2} - Estoque: {3}\n'.format(p['id'], p['nome'], p['preco'], p['estoque']))
+
+
+opcao = '1'
+
+os.system('clear')
+print('Carrinho de Compras \n')
+
+
+def obterNomeProduto(id):
+    for p in produtos:
+        if p['id'] == id:
+            return p['nome']
+
+
+while opcao != '0':
+    exibirOpcoes()
+    opcao = input('Digite a opção: ')
+
+    if opcao == '1':
+        exibirProdutos()
+        id = int(input('Digite o identificador do produto: '))
+        quantidade = int(input('Digite quantidade: '))
+        carrinho.append({'id': id, 'quantidade': quantidade})
+
+    if opcao == '2':
+        id = int(input('Digite o identificador do produto: '))
+        temp = []
+        for item in carrinho:
+            if item['id'] != id:
+                temp.append(item)
+
+    if opcao == '3':
+        print('\n\n')
+        somatorio = 0
+        for item in carrinho:
+            for produto in produtos:
+                if produto['id'] == item['id']:
+                    somatorio = somatorio + \
+                        (produto['preco'] * item['quantidade'])
+                    break
+
+            print(
+                'Nome: {0} - Quantidade: {1}'.format(obterNomeProduto(item['id']), item['quantidade']))
+        print('Preço total: {0}'.format(somatorio))
+
+    if opcao == '4':
+        carrinho = []
+        clear()
